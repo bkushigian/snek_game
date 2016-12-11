@@ -3,43 +3,53 @@
   CURRENT DEV:  
   Implement menu"""
 
+import curses
+import time
+import random
+from sys import exit
+from os import path
+
 importSuccess = True
 try:  
   import pygame
   import pygame.mixer
-except ImportError:
-  print "COULDN'T IMPORT pygame"
-  importSuccess = False
 
-import curses
-import time
-import random
+except ImportError:
+  print "Couldn't import pygame"
+  importSuccess = False
 
 ####
 
-if importSuccess == True:
-
+MEDIA = 'media'
+if importSuccess:
   pygame.init()
   pygame.mixer.init()
-  pygame.mixer.music.load('music2.wav')
-  chomp = pygame.mixer.Sound('chomp.wav')
+  pygame.mixer.music.load(path.join(MEDIA, 'music.wav'))
+  chomp = pygame.mixer.Sound(path.join(MEDIA, 'chomp.wav'))
   chomp.set_volume(.8)
-  money = pygame.mixer.Sound('money.wav')
-  life = pygame.mixer.Sound('life.wav')
-  block = pygame.mixer.Sound('block.wav')
-  gameover = pygame.mixer.Sound('gameOver.wav')
-  levelwin = pygame.mixer.Sound('levelwin.wav')
+  money = pygame.mixer.Sound(path.join(MEDIA, 'money.wav'))
+  life = pygame.mixer.Sound(path.join(MEDIA,'life.wav'))
+  block = pygame.mixer.Sound(path.join(MEDIA, 'block.wav'))
+  gameover = pygame.mixer.Sound(path.join(MEDIA,'gameOver.wav'))
+  levelwin = pygame.mixer.Sound(path.join(MEDIA,'levelwin.wav'))
+
+else:
+    print "Exiting"
+    exit(1)
 
 ###myList holds [y, x] values
-soundList = [chomp, money, life, block, gameover, levelwin]
-myList = [[2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6]]
-appleList = []
-enemyList = []
-moneyList = []
+
+soundList       = [chomp, money, life, block, gameover, levelwin]
+myList          = [[2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6]]
+appleList       = []
+enemyList       = []
+moneyList       = []
 movingEnemyList = []
-xtraLifeList = []
+xtraLifeList    = []
 hiddenSpaceList = []
+
 ######MOVING ENEMIES TEMPLATE######
+
 # [y, x, starttime, updatetime, [rightturn],[upturn], [leftturn], [downturn]]
 # can also accept form:
 # [y, x, starttime, updatetime]
@@ -421,52 +431,43 @@ def levelSelect(level):
     screen.addstr(dims[0]/2, dims[1]/2 - 6, 'LEVEL WON!!!', curses.color_pair(4))
     screen.addstr(0, dims[1] / 2 - 14, 'LEVEL: %d          SCORE: %d' % (level, points), curses.color_pair(4))
     screen.refresh()
-  if level == 1:
-    f = open('lv1.txt', 'r')
+  if level in range(1, 13):
+    f = open(path.join('data','lv{}.txt'.format(level)), 'r')
 
+  if level == 1:
     extraList2.append([35, 79])
+
   elif level == 2:
-    f = open('lv2.txt', 'r')
     extraList.append([11, 51])
     extraList2 = [[21,26], [3, 0]]
+
   elif level == 3:
-    f = open('lv3.txt', 'r')
     extraList2.append([16, 66])
     extraList.append([26, 39])
+
   elif level == 4:
-    f = open('lv4.txt', 'r')
     extraList = [[3,2], [30, 52], [30, 27]]
     extraList2 = [[35, 20]]
+
   elif level == 5:
-    f = open('lv5.txt', 'r') 
     extraList2 = [[33,63], [34, 78]]
+
   elif level == 6:
-    f = open('lv6.txt', 'r')
+    pass
     
   elif level == 7:
-    f = open('lv7.txt', 'r') 
     extraList2 = [[19, 12]]
-  elif level == 8:
-    f = open('lv8.txt', 'r')
-  elif level == 9:
-    f = open('lv9.txt', 'r')
-  elif level == 10:
-    f = open('lv10.txt', 'r')
-  elif level == 11:
-    f = open('lv11.txt', 'r')
-  elif level == 12:
-    f = open('lv12.txt', 'r')
+
+  elif level in (8,9,10,11,12):
+    pass
   else:
     winGame()
     repeat = False
     return 0, [], [], [], [], [], '', 0, False
   
-  time.sleep(2)
- 
-###UNPACKS TEXT###
-  
   name, appleList, moneyList, enemyList, xtraLifeList, hiddenSpaceList, hint, applePoints, moneyPoints, sleepTime = unpackText(f)
-  
+
+  time.sleep(2)
 
   for i in extraList:
     moneyList.append(i)
@@ -474,6 +475,7 @@ def levelSelect(level):
     xtraLifeList.append(i)
   
 ###UPDATE SCREEN###
+
   screen.clear()
   screen.addstr(dims[0]/2 - 2, dims[1]/2 - 4, 'LEVEL %d' % level)
   screen.addstr(dims[0]/2, dims[1]/2 - len(name) / 2, name)
