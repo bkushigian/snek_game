@@ -53,6 +53,7 @@ hiddenSpaceList = []
 # [y, x, starttime, updatetime, [rightturn],[upturn], [leftturn], [downturn]]
 # can also accept form:
 # [y, x, starttime, updatetime]
+
 repeat = True; points = 0; sleepTime = .2; 
 currentLevel = 0
 direction = 1 # 0: UP, 1: RIGHT, 2: DOWN, 3: LEFT
@@ -615,18 +616,22 @@ def writeEnemies(enemyList):
   for i in range(len(enemyList)):
     screen.addstr(enemyList[i][0], enemyList[i][1], '#', curses.color_pair(2))
     screen.move(dims[0]-1, dims[1] - 1)
+
 def writeApples(appleList): 
   for i in range(len(appleList)):
     screen.addstr(appleList[i][0], appleList[i][1], '@', curses.color_pair(3))
     screen.move(dims[0]-1, dims[1] - 1)
+
 def writeMoney(moneyList):
   for i in range(len(moneyList)):
     screen.addstr(moneyList[i][0], moneyList[i][1], '$', curses.color_pair(1))
     screen.move(dims[0]-1, dims[1] - 1)
+
 def writeXtraLife(xtraLifeList):
   for i in xtraLifeList:
     screen.addstr(i[0], i[1], '+', curses.color_pair(3))
     screen.move(dims[0]-1, dims[1] - 1)
+
 def writeHiddenSpaces(hiddenSpaceList, cEGGS):
   cEGGS = False
   if cEGGS == False:
