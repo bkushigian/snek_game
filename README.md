@@ -31,7 +31,7 @@ Dude, I warned you.
 Thank you so much, Ben, it's so nice to finally get some good feedback, even if
 it is from myself.
 
-# I **Love** the music
+## I *Love* the music
 Thanks, I spent 24 hours of my life programming frequencies and time durations
 into Audacity. I got lazy and rounded off some of the decimals, that's why it
 sounds out of tune.
