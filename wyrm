@@ -277,10 +277,10 @@ def takeCode(points, applePoints, moneyPoints, level, mortal, lives, mpMOD, apMO
     elif CODE == 'SHOT': # LEVEL 7
       level = 6
       cheat = True
-    elif CODE == 'JLIA': # LEVEL 8
+    elif CODE == 'JULIA': # LEVEL 8
       level = 7
       cheat = True
-    elif CODE == 'MNBS': # LEVEL 9
+    elif CODE == 'BENOIT': # LEVEL 9
       level = 8
       cheat = True
     elif CODE == 'MAZE': # LEVEL 10

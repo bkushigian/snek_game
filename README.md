@@ -4,10 +4,10 @@ The devolved Snake game we all wish I hadn't made
 ## What is WyRm?
 It's a really crappy game. It's even more crappily coded. I'm trying to fix both
 of these. The first bit is probably here to stay, but the second bit can be
-improved. 
-
+improved.
+![Dude! You're a *wyrm*][wyrm1]
 ## Why should I play WyRm?
-Honestly, you shouldn't
+Honestly? You shouldn't.
 
 ## Ben, I haven't read any of the things above this. How do I install?
 1. Download this
@@ -35,3 +35,5 @@ it is from myself.
 Thanks, I spent 24 hours of my life programming frequencies and time durations
 into Audacity. I got lazy and rounded off some of the decimals, that's why it
 sounds out of tune.
+
+[wyrm1]
