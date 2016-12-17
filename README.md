@@ -16,9 +16,22 @@ Honestly, you shouldn't
 3. Give away your computer because you've ruined it
 4. Never speak of this again
 
+## Ben, this crashes and my terminal is all messed up
+You need to make sure the terminal is big enough. Make sure it's at least 81x35
+characters in dimension, because this is written really poorly and breaks for
+the slightest reason.
+
+## Ben, WTF are the controls?
+ASDW dude. Oh, and hit M For menu.
+
 ## Ben, I really don't like your game.
 Dude, I warned you.
 
 ## Ben, you're too hard on yourself. This is a great game!!
 Thank you so much, Ben, it's so nice to finally get some good feedback, even if
 it is from myself.
+
+# I **Love** the music
+Thanks, I spent 24 hours of my life programming frequencies and time durations
+into Audacity. I got lazy and rounded off some of the decimals, that's why it
+sounds out of tune.
