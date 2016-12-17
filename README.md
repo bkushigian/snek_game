@@ -2,8 +2,8 @@
 The devolved Snake game we all wish I hadn't made.
 
 ## What is WyRm?
-It's a really crappy game. It's even more crappily coded. I'm trying to fix both
-of these. The first bit is probably here to stay, but the second bit can be
+It's a really crappy game. It's even crappilyer coded. I'm trying to fix both
+of these things. The first bit is probably here to stay, but the second bit can be
 improved.
 
 ![][wyrm1]
