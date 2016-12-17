@@ -36,6 +36,6 @@ Thanks, I spent 24 hours of my life programming frequencies and time durations
 into Audacity. I got lazy and rounded off some of the decimals, that's why it
 sounds out of tune.
 
-[wyrm1]: https://github.com/bkushigian/WyRm/media/punishwyrm.png]
-[wyrm2]: https://github.com/bkushigian/WyRm/media/mandelsnake.png]
-[wyrm3]: https://github.com/bkushigian/WyRm/media/juliawyrm.png]
+[wyrm1]: benkushigian.com/misc/files/WyRm/punishwyrm.png "WyRm!"
+[wyrm2]: benkushigian.com/misc/files/WyRm/mandelsnake.png "WyRm!!"
+[wyrm3]: benkushigian.com/misc/files/WyRm/juliawyrm.png "WWWWYYYYRYRRYRYRYYRRRMMMMMMMMMM!!!!!!!!!!!!!!!!!!!!!!!!!!"
