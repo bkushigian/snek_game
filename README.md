@@ -8,14 +8,14 @@ improved.
 ![Dude! You're a *wyrm*][wyrm1]
 ## Why should I play WyRm?
 Honestly? You shouldn't.
-
+![*Dude!* You get to eat *fractalssss*][wyrm2]
 ## Ben, I haven't read any of the things above this. How do I install?
 1. Download this
 2. Install pygame (`sudo apt-get install python-pygame` or `pip install pygame`
    should do the trick)
 3. Give away your computer because you've ruined it
 4. Never speak of this again
-
+![**DUUUUDE!!!**  FRACTALS!!!!][wyrm3]
 ## Ben, this crashes and my terminal is all messed up
 You need to make sure the terminal is big enough. Make sure it's at least 81x35
 characters in dimension, because this is written really poorly and breaks for
@@ -36,4 +36,6 @@ Thanks, I spent 24 hours of my life programming frequencies and time durations
 into Audacity. I got lazy and rounded off some of the decimals, that's why it
 sounds out of tune.
 
-[wyrm1]
+[wyrm1]: https://github.com/bkushigian/WyRm/media/punishwyrm.png]
+[wyrm2]: https://github.com/bkushigian/WyRm/media/mandelsnake.png]
+[wyrm3]: https://github.com/bkushigian/WyRm/media/juliawyrm.png]
