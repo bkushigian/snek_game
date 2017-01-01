@@ -76,9 +76,9 @@ def menu():
   repeat = True
   while repeat == True:
     colorList = [curses.color_pair(1),curses.color_pair(1),curses.color_pair(1),curses.color_pair(1)]
-    
+
     colorList[currentPos] = curses.color_pair(2)
-    
+
     screen.clear()
     screen.addstr(dims[0] / 2 - 6, (dims[1] - len(string1)) / 2, string1, colorList[0])
     screen.addstr(dims[0] / 2 - 2, (dims[1] - len(string2)) / 2, string2, colorList[1])
@@ -100,8 +100,6 @@ def menu():
       if currentPos == 0:
         audio()
       elif currentPos == 1:
-#         global difficulty
-#         difficulty = updateDifficulty()
         pass #DIFFICULTY
       elif currentPos == 2: #RETURN TO GAME
         
@@ -136,16 +134,6 @@ def menu():
         screen.refresh()
         time.sleep(1.5)
         return True
-# def difficulty():
-#   global difficulty
-#   while 1:
-#   screen.clear()
-#   screen.addstr(dims[0] / 2, dims[1] / 2 - 5, 'DIFFICULTY', curses.color_pair(1)
-#   screen.addstr(dims[0] / 2 + 1, dims[1] / 2 - 1, '%d' % (difficulty), curses.color_pair(2)
-#   q = screen.getch()
-#   if q == ord('w') or q == ord('d'):
-#     difficulty += 1
-#   return difficulty
       
 def audio():
   currentPos = 0

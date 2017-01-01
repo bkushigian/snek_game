@@ -24,3 +24,6 @@ class Audio(object):
             self.levelwin = mixer.Sound(path.join(MEDIA, 'levelwin.wav'))
             
             chomp.set_volume(.8)
+    def audio_menu(self):
+        pass
+        

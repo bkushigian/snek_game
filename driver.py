@@ -5,4 +5,4 @@ CHEAT = False
 
 def loop(board):
     while True:
-        pass
+        break
