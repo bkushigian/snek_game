@@ -127,10 +127,17 @@ class Screen(object):
         # Other options
         self.screen.nodelay(1)
         curses.noecho()
+        curses.cbreak()
         # TODO: Something about cbreak?
 
     def draw_board(self):
         ''' Draw board '''
+        self.dims = self.screen.getmaxyx()
+        if self.dims[0] + 8 < BOARD_HEIGHT or self.dims[1] + 5 < BOARD_WIDTH:
+            self.teardown()
+            raise RuntimeError("Screen is too small. Please resize")
+
+        self.top_left = (6, self.dims[1] / 2 - (BOARD_WIDTH / 2))
         # FIXME: Make efficient. Keep track of changes. Currently redraws the
         # ENTIRE BOARD, one char at a time. This is dumb and shouldn't happen.
         # So fix this.
@@ -151,14 +158,25 @@ class Screen(object):
         y,x = board.snake[-1]
         HEADCHAR = self._head_char[board.current_direction]
         self.write_board_char(y, x, HEADCHAR)
+        self.screen.move(0,0)
         self.screen.refresh()
-
-
-
 
     def write_board_char(self, y,x, char = None):
         transy = y + self.top_left[0]
         transx = x + self.top_left[1]
+
+        if transy < 0 or transy >= self.dims[0]:
+            self.teardown()
+            raise RuntimeError(
+                "Screen height is too small: y = {} >= {} Please resize".format(
+                    transy, self.dims[0]))
+
+        if transx < 0 or transx >= self.dims[1]:
+            self.teardown()
+            raise RuntimeError(
+                "Screen width it too narrow: x = {} >= {} Please resize".format(
+                    transx, self.dims[1]))
+
         if char == None:
             c = self.board.board[y][x]
         else:
@@ -177,6 +195,7 @@ class Screen(object):
         screen.refresh()
 
     def teardown(self):
+        curses.echo(); self.screen.keypad(0); curses.nocbreak();
         curses.endwin()
 
     def test_write(self):
@@ -191,4 +210,24 @@ class Screen(object):
 
     def set_scheme(self, scheme = 'normal'):
         self.colorscheme.set_scheme(scheme)
+
+    def centered_string_x(self, string):
+        ''' Get the starting coordinate of a centered string '''
+        return (self.getmaxyx()[1]/2 - len(string)/2)
+
+    # The following are wrappers for curses functions
+    def getch(self):
+        return self.screen.getch()
+
+    def getmaxyx(self):
+        return self.screen.getmaxyx()
+
+    def addstr(self, *args):
+        self.screen.addstr(*args)
+
+    def refresh(self):
+        self.screen.refresh()
+
+    def clear(self):
+        self.screen.clear()
 

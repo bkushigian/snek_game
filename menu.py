@@ -1,5 +1,8 @@
 # TODO: This is directly copied from wyrm file -- make it pretty, make it work!
+
 class Menu(object):
+    # FIXME: Directly copied, lots of 'global' references that will not be
+    # defined. 
     def audio(self):
         currentPos = 0
   
