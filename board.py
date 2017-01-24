@@ -8,6 +8,7 @@ from externs import *
 from drawable import Drawable
 from handler import Handler
 from action import *
+from random import randrange
 
 
 
@@ -27,8 +28,8 @@ class Board(Drawable, Handler):
 
         self.name           = ''
         self.sleepTime      = 0.25
-        self.applePoints    = 0
-        self.moneyPoints    = 0
+        self.applePoints    = 5
+        self.moneyPoints    = 25
         self.hint           = ''
 
         self.screen = screen
@@ -52,6 +53,9 @@ class Board(Drawable, Handler):
 
     def set_actions(self, actions):
         self.actions = actions
+
+    def load_blank(self):
+        self.load_level('blank')
 
     def load_level(self, levelNumber):
         self.level = levelNumber
@@ -154,6 +158,7 @@ class Board(Drawable, Handler):
         if self.board[y][x] != APPLE:
             raise RuntimeError("No apple at position ({},{})".format( y, x))
         self.actions['apple'](y,x)
+        self.score += self.applePoints
 
     def eat_money(self):
         y,x = head = self.snake[-1]
@@ -166,7 +171,7 @@ class Board(Drawable, Handler):
         if self.board[y][x] != LIFE and self.board[y][x] != SECRETLIFE:
             raise RuntimeError("No life at position ({},{})".format( y, x))
         
-        self.actions['life']()
+        self.actions['life'](y,x)
 
     def hit_block(self):
         y,x = head = self.snake[-1]
@@ -267,6 +272,36 @@ class Board(Drawable, Handler):
 
     def grow_snake(self, amount = 1):
         self.snakelen += 1
+
+    def gen_random_apples(self, n = 3):
+        free_spaces = []
+        board       = self.board
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                if board[i][j] == SPACE:
+                    free_spaces.append((i,j))
+
+        for it in range(n):
+            k = randrange(len(free_spaces))
+            i,j = free_spaces[k]
+            board[i][j] = APPLE
+            free_spaces = free_spaces[:k] + free_spaces[k+1:]
+
+        gen_money_prob = randrange(100)
+        if gen_money_prob > 85:
+            num = (gen_money_prob - 85) / 4
+            for it in range(num):
+                k = randrange(len(free_spaces))
+                i,j = free_spaces[k]
+                board[i][j] = MONEY
+                free_spaces = free_spaces[:k] + free_spaces[k+1:]
+
+        gen_life_prob = randrange(100)
+        if gen_money_prob > 95:
+            k = randrange(len(free_spaces))
+            i,j = free_spaces[k]
+            board[i][j] = LIFE
+            free_spaces = free_spaces[:k] + free_spaces[k+1:]
 
 # For Testing
 b = Board(1)

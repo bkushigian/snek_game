@@ -5,6 +5,7 @@ from board    import Board
 from externs  import *
 from screen   import Screen
 from menu     import Menu
+from random   import randrange
 import time
 
 class Game(object):
@@ -95,6 +96,47 @@ class Game(object):
                     board.init_snake()
             if move_result == WE_HAVE_WON:
                 return WE_HAVE_WON
+            
+            time.sleep(sleeptime)
+
+    def run_random_level(self):
+        ''' Run the current level on the board '''
+        screen      = self.screen
+        board       = self.board
+        sleeptime   = self.sleeptime
+        handle      = board.handle
+        
+        # Load the current level
+        board.load_blank()
+        board.level = 0
+        level       = board.level
+        new_apples  = 5
+        apples      = 0
+        # MAIN LOOP
+        while True:
+            if apples == 0:
+                board.level += 1
+                board.sleepTime *= 0.9
+                new_apples += 2
+                board.gen_random_apples(new_apples)
+                apples += new_apples
+            board.set_screen(screen)
+            c = ' '
+            c = screen.getch()
+            screen.addstr(0,0,str(c))
+            board.handle(c)
+            move_result = board.move()
+            board.draw()
+            if move_result == WE_HAVE_DIED:
+                # Handle life loss, do we lose game?
+                board.lives -= 1
+                if board.lives <= 0:
+                    return WE_HAVE_DIED
+                else:
+                    board.init_snake()
+            if move_result == WE_HAVE_WON:
+                apples -= 1
+                pass
             
             time.sleep(sleeptime)
 

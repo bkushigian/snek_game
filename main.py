@@ -1,6 +1,5 @@
 import time
-import random
-from sys import exit
+from sys import exit, argv
 from os import path
 
 # Local Imports
@@ -10,12 +9,33 @@ from board import Board
 from screen import Screen
 from externs import *
 from game import Game
+import traceback
 
 
 def main():
     ''' Main function. Creates board, screen, etc. '''
-    game = Game()
+    if len(argv) > 1:
+        if argv[1] == 'random':
+            try:
+                raw_input("Playing Random Mode!!! [Hit any key to continue]")
+                game = Game()
+                game.setup()
+                result = game.run_random_level()
+                if result == WE_HAVE_DIED:
+                    pass
+                elif result == WE_HAVE_WON:
+                    raise RuntimeError("Random mode should never be won")
+                else:
+                    raise RuntimeError("Shouldn't reach this state")
+
+            except Exception as e:
+                game.teardown()
+                print e
+                traceback.print_exc()
+        return
+
     try:
+        game = Game()
         game.setup()
         while True:
             result = game.run_current_level()
