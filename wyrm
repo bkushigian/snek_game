@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """Current Dev: use delchar instead of rewriting everything.
 
   CURRENT DEV:  
@@ -16,7 +16,7 @@ try:
   import pygame.mixer
 
 except ImportError:
-  print "Couldn't import pygame"
+  print("Couldn't import pygame")
   importSuccess = False
 
 ####
@@ -35,7 +35,7 @@ if importSuccess:
   levelwin = pygame.mixer.Sound(path.join(MEDIA,'levelwin.wav'))
 
 else:
-    print "Exiting"
+    print("Exiting")
     exit(1)
 
 ###myList holds [y, x] values
@@ -80,10 +80,10 @@ def menu():
     colorList[currentPos] = curses.color_pair(2)
 
     screen.clear()
-    screen.addstr(dims[0] / 2 - 6, (dims[1] - len(string1)) / 2, string1, colorList[0])
-    screen.addstr(dims[0] / 2 - 2, (dims[1] - len(string2)) / 2, string2, colorList[1])
-    screen.addstr(dims[0] / 2 + 2, (dims[1] - len(string3)) / 2, string3, colorList[2])
-    screen.addstr(dims[0] / 2 + 6, (dims[1] - len(string4)) / 2, string4, colorList[3])
+    screen.addstr(dims[0] // 2 - 6, (dims[1] - len(string1)) // 2, string1, colorList[0])
+    screen.addstr(dims[0] // 2 - 2, (dims[1] - len(string2)) // 2, string2, colorList[1])
+    screen.addstr(dims[0] // 2 + 2, (dims[1] - len(string3)) // 2, string3, colorList[2])
+    screen.addstr(dims[0] // 2 + 6, (dims[1] - len(string4)) // 2, string4, colorList[3])
     screen.move(dims[0] - 1, dims[1] - 1)
     screen.refresh()
     q = screen.getch()
@@ -118,18 +118,18 @@ def menu():
         GAMEOVER = 'GAME OVER'
         gameover.play()
         for i in range(len(GAMEOVER)):
-          for j in range(dims[0]/2):
+          for j in range(dims[0]//2):
             screen.clear()
       
             for k in range(i):
-              screen.addstr(dims[0]/2, dims[1]/2 - 8 + 2*k, GAMEOVER[k])
-            screen.addstr(j, dims[1]/2 - 8 + 2*i, GAMEOVER[i])
+              screen.addstr(dims[0]//2, dims[1]//2 - 8 + 2*k, GAMEOVER[k])
+            screen.addstr(j, dims[1]//2 - 8 + 2*i, GAMEOVER[i])
             screen.move(dims[0]-1, dims[1]-1)
             screen.refresh()
             time.sleep(.03)
         screen.clear()
         for i in range(len(GAMEOVER)):
-          screen.addstr(dims[0]/2, dims[1]/2 - 8 + 2*i, GAMEOVER[i])    
+          screen.addstr(dims[0]//2, dims[1]//2 - 8 + 2*i, GAMEOVER[i])
         screen.move(dims[0]-1, dims[1]-1)
         screen.refresh()
         time.sleep(1.5)
@@ -153,14 +153,14 @@ def audio():
     screen.clear()
     
     # AUDIO
-    screen.addstr(dims[0] / 2 - 6, (dims[1] - len(string1)) / 2, string1, colorList[0])
-    screen.addstr(dims[0] / 2 - 5, dims[1] / 2 - 1, '%d' % (int(musicVol * 10)), curses.color_pair(1))
+    screen.addstr(dims[0] // 2 - 6, (dims[1] - len(string1)) // 2, string1, colorList[0])
+    screen.addstr(dims[0] // 2 - 5, dims[1] // 2 - 1, '%d' % (int(musicVol * 10)), curses.color_pair(1))
     
-    screen.addstr(dims[0] / 2 - 2, (dims[1] - len(string2)) / 2, string2, colorList[1])
-    screen.addstr(dims[0] / 2 - 1, dims[1] / 2 - 1, '%d' % (int(soundVol * 10)), curses.color_pair(1))
+    screen.addstr(dims[0] // 2 - 2, (dims[1] - len(string2)) // 2, string2, colorList[1])
+    screen.addstr(dims[0] // 2 - 1, dims[1] // 2 - 1, '%d' % (int(soundVol * 10)), curses.color_pair(1))
     
-    screen.addstr(dims[0] / 2 + 2, (dims[1] - len(string3)) / 2, string3, colorList[2]) 
-    screen.addstr(dims[0] / 2 + 6, (dims[1] - len(string4)) / 2, string4, colorList[3])
+    screen.addstr(dims[0] // 2 + 2, (dims[1] - len(string3)) // 2, string3, colorList[2])
+    screen.addstr(dims[0] // 2 + 6, (dims[1] - len(string4)) // 2, string4, colorList[3])
     screen.move(dims[0] - 1, dims[1] - 1)
     screen.refresh()
     q = screen.getch()
@@ -192,7 +192,7 @@ def audio():
 
 def fxVolume(soundVol, soundList):
   while 1:
-    screen.addstr(dims[0] / 2 - 1, dims[1] / 2 - 1, '%d ' % (int(soundVol * 10)), curses.color_pair(2))
+    screen.addstr(dims[0] // 2 - 1, dims[1] // 2 - 1, '%d ' % (int(soundVol * 10)), curses.color_pair(2))
     screen.move(dims[0]-1, dims[1] - 1)
     screen.refresh()
     q = screen.getch()
@@ -216,7 +216,7 @@ def fxVolume(soundVol, soundList):
 def musicVolume(musicVol):
   pass
   while 1:
-    screen.addstr(dims[0] / 2 - 5, dims[1] / 2 - 1, '%d ' % (int(musicVol * 10)), curses.color_pair(2))
+    screen.addstr(dims[0] // 2 - 5, dims[1] // 2 - 1, '%d ' % (int(musicVol * 10)), curses.color_pair(2))
     screen.move(dims[0]-1, dims[1] - 1)
     screen.refresh()
     q = screen.getch()
@@ -243,7 +243,7 @@ def takeCode(points, applePoints, moneyPoints, level, mortal, lives, mpMOD, apMO
   cEGGS = False
   while temp < 1:
   
-    CODE = raw_input('Enter Code: ')
+    CODE = input('Enter Code: ')
     if CODE == 'BBDD':
       points += 99999999
       cheat = True
@@ -418,8 +418,8 @@ def levelSelect(level):
   extraList2 = [] # HOLDS HIDDEN LIVES
   screen.clear()
   if level != 1:
-    screen.addstr(dims[0]/2, dims[1]/2 - 6, 'LEVEL WON!!!', curses.color_pair(4))
-    screen.addstr(0, dims[1] / 2 - 14, 'LEVEL: %d          SCORE: %d' % (level, points), curses.color_pair(4))
+    screen.addstr(dims[0]//2, dims[1]//2 - 6, 'LEVEL WON!!!', curses.color_pair(4))
+    screen.addstr(0, dims[1] // 2 - 14, 'LEVEL: %d          SCORE: %d' % (level, points), curses.color_pair(4))
     screen.refresh()
   if level in range(1, 13):
     f = open(path.join('data','lv{}.txt'.format(level)), 'r')
@@ -467,9 +467,9 @@ def levelSelect(level):
 ###UPDATE SCREEN###
 
   screen.clear()
-  screen.addstr(dims[0]/2 - 2, dims[1]/2 - 4, 'LEVEL %d' % level)
-  screen.addstr(dims[0]/2, dims[1]/2 - len(name) / 2, name)
-  screen.addstr(dims[0]/2 + 2, dims[1]/2 - len(hint) / 2, hint)    
+  screen.addstr(dims[0]//2 - 2, dims[1]//2 - 4, 'LEVEL %d' % level)
+  screen.addstr(dims[0]//2, dims[1]//2 - len(name) // 2, name)
+  screen.addstr(dims[0]//2 + 2, dims[1]//2 - len(hint) // 2, hint)
   screen.move(dims[0]-1, dims[1]-1)     
   screen.refresh()
   time.sleep(1.5)    
@@ -488,7 +488,7 @@ def levelSelect(level):
 
 def pause():
   screen.clear()
-  screen.addstr(dims[0]/2, dims[1]/2 - 6, 'GAME PAUSED')
+  screen.addstr(dims[0]//2, dims[1]//2 - 6, 'GAME PAUSED')
   screen.move(dims[0]-1, dims[1]-1)
   screen.refresh()
   screen.nodelay(0)
@@ -510,7 +510,7 @@ def pause():
   
 
 def writeScoreBoard():
-  screen.addstr(0, dims[1] / 2 - 27, 'LEVEL: %d          SCORE: %d            LIVES: %d' % (currentLevel, points, lives), curses.color_pair(4))      
+  screen.addstr(0, dims[1] // 2 - 27, 'LEVEL: %d          SCORE: %d            LIVES: %d' % (currentLevel, points, lives), curses.color_pair(4))
   screen.move(dims[0]-1, dims[1]-1)
 
 
@@ -562,18 +562,18 @@ def gameOver(enemyList, appleList, moneyList, myList, xtraLifeList, hiddenSpaceL
     GAMEOVER = 'GAME OVER'
     gameover.play()
     for i in range(len(GAMEOVER)):
-      for j in range(dims[0]/2):
+      for j in range(dims[0]//2):
         screen.clear()
       
         for k in range(i):
-          screen.addstr(dims[0]/2, dims[1]/2 - 8 + 2*k, GAMEOVER[k])
-        screen.addstr(j, dims[1]/2 - 8 + 2*i, GAMEOVER[i])
+          screen.addstr(dims[0]//2, dims[1]//2 - 8 + 2*k, GAMEOVER[k])
+        screen.addstr(j, dims[1]//2 - 8 + 2*i, GAMEOVER[i])
         screen.move(dims[0]-1, dims[1]-1)
         screen.refresh()
         time.sleep(.03)
     screen.clear()
     for i in range(len(GAMEOVER)):
-      screen.addstr(dims[0]/2, dims[1]/2 - 8 + 2*i, GAMEOVER[i])    
+      screen.addstr(dims[0]//2, dims[1]//2 - 8 + 2*i, GAMEOVER[i])
     screen.move(dims[0]-1, dims[1]-1)
     screen.refresh()
     time.sleep(1.5)
@@ -642,7 +642,7 @@ def writeToScreen(myStr, y = 0, x = 0, tempSleepTime = 1):
   time.sleep(tempSleepTime)
   
 def selectDifficulty():
-  temp = raw_input('\n\n\n\n\nSELECT DIFFICULTY:\n\n\n\n\n(1) Novice\n(2) Easy\n(3) Normal \n(4) Hard\n(5)INSAAAANE\n\n\n')
+  temp = input('\n\n\n\n\nSELECT DIFFICULTY:\n\n\n\n\n(1) Novice\n(2) Easy\n(3) Normal \n(4) Hard\n(5)INSAAAANE\n\n\n')
   if temp == '1':
     temp = 1.75
   elif temp == '2':
@@ -659,7 +659,7 @@ def selectDifficulty():
 def winGame():
   screen.clear()
   snakeList = [[2,3], [2,4], [2,5], [2,6], [2,7], [2,8]]
-  screen.addstr(dims[0] / 2, dims[1] / 2 - 5, 'YOU WON!!!')
+  screen.addstr(dims[0] // 2, dims[1] // 2 - 5, 'YOU WON!!!')
   screen.move(dims[0]-1, dims[1]-1)
   screen.refresh
   time.sleep(1)
@@ -687,7 +687,7 @@ curses.noecho()
 dims = screen.getmaxyx() #should return tuple 30x80
 q = -1
 
-writeToScreen('BEGIN!!!', dims[0] / 2, dims[1] / 2 - 4, .5)
+writeToScreen('BEGIN!!!', dims[0] // 2, dims[1] // 2 - 4, .5)
 if importSuccess == True:
   pygame.mixer.music.play(1000)
 

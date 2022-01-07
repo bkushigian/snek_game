@@ -65,7 +65,7 @@ class Board(Drawable, Handler):
                 lines = f.readlines()
         except:
             # TODO: Handle ncurses, release screen
-            print "Could not open level", level
+            print("Could not open level", level)
             exit(1)
 
         # Load the actual board

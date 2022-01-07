@@ -17,7 +17,7 @@ def main():
     if len(argv) > 1:
         if argv[1] == 'random':
             try:
-                raw_input("Playing Random Mode!!! [Hit any key to continue]")
+                input("Playing Random Mode!!! [Hit any key to continue]")
                 game = Game()
                 game.setup()
                 result = game.run_random_level()
@@ -30,8 +30,7 @@ def main():
 
             except Exception as e:
                 game.teardown()
-                print e
-                traceback.print_exc()
+                raise e
         return
 
     try:
@@ -49,7 +48,7 @@ def main():
         game.teardown()
     except Exception as e:
         game.teardown()
-        print e
+        raise e
 
 if __name__ == '__main__':
     main()

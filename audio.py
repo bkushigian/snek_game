@@ -7,7 +7,7 @@ try:
     import pygame.mixer as mixer
     we_have_pygame = True
 except ImportError:
-    print "Couldn't import pygame"
+    print("Couldn't import pygame")
     we_have_pygame = False
 
 class Audio(object):

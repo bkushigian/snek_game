@@ -21,14 +21,14 @@ def main():
         test_board()
         '''
         test_game()
-        print "SUCCESS"
+        print("SUCCESS")
     except Exception as e:
-        print e
+        print(e)
         traceback.print_exc()
         exceptions.append(e)
 
     for e in exceptions:
-        print e
+        print(e)
 
     if global_audio != None:
         global_audio.music.fadeout(4000)
@@ -45,7 +45,7 @@ def test_action():
         apple_action.perform(3,2)
         time.sleep(1)
     except Exception as e:
-        print e
+        print(e)
         exceptions.append(e)
         traceback.print_exc()
 
@@ -81,7 +81,7 @@ def test_audio():
         global_audio = a
     
     except Exception as e:
-        print e
+        print(e)
         exceptions.append(e)
         traceback.print_exc()
 
@@ -107,7 +107,7 @@ def test_screen():
         return True
 
     except Exception as e:
-        print e
+        print(e)
         exceptions.append(e)
         traceback.print_exc()
         return False
@@ -135,7 +135,7 @@ def test_board():
         scr.teardown()
     except Exception as e:
         scr.teardown()
-        print e
+        print(e)
         exceptions.append(e)
         traceback.print_exc()
 
@@ -155,7 +155,7 @@ def test_game():
         game.teardown()
     except Exception as e:
         game.teardown()
-        print e
+        print(e)
         exceptions.append(e)
         traceback.print_exc()
 

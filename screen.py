@@ -5,7 +5,7 @@ from externs import *
 try:
     import curses
 except:
-    print "Could not import ncurses. Exiting"
+    print("Could not import ncurses. Exiting")
     exit(1)
 
 # Colors for drawing, not initialized
