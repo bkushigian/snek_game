@@ -203,7 +203,7 @@ class Board(Drawable, Handler):
         ''' Calculate where top left of board should be placed given board
         height and board width (globals) and maxy, maxx
         '''
-        return (6, self.screen.getmaxyx()[1] / 2 - (BOARD_WIDTH / 2))
+        return (6, self.screen.getmaxyx()[1] // 2 - (BOARD_WIDTH // 2))
 
     def draw(self):
         # TODO: ensure that we have self.screen defined
@@ -289,7 +289,7 @@ class Board(Drawable, Handler):
 
         gen_money_prob = randrange(100)
         if gen_money_prob > 85:
-            num = (gen_money_prob - 85) / 4
+            num = (gen_money_prob - 85) // 4
             for it in range(num):
                 k = randrange(len(free_spaces))
                 i,j = free_spaces[k]

@@ -137,7 +137,7 @@ class Screen(object):
             self.teardown()
             raise RuntimeError("Screen is too small. Please resize")
 
-        self.top_left = (6, self.dims[1] / 2 - (BOARD_WIDTH / 2))
+        self.top_left = (6, self.dims[1] // 2 - (BOARD_WIDTH // 2))
         # FIXME: Make efficient. Keep track of changes. Currently redraws the
         # ENTIRE BOARD, one char at a time. This is dumb and shouldn't happen.
         # So fix this.
@@ -213,7 +213,7 @@ class Screen(object):
 
     def centered_string_x(self, string):
         ''' Get the starting coordinate of a centered string '''
-        return (self.getmaxyx()[1]/2 - len(string)/2)
+        return (self.getmaxyx()[1]//2 - len(string)//2)
 
     # The following are wrappers for curses functions
     def getch(self):

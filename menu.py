@@ -21,14 +21,14 @@ class Menu(object):
             screen.clear()
             
             # AUDIO
-            screen.addstr(dims[0] / 2 - 6, (dims[1] - len(string1)) / 2, string1, colorList[0])
-            screen.addstr(dims[0] / 2 - 5, dims[1] / 2 - 1, '%d' % (int(musicVol * 10)), curses.color_pair(1))
+            screen.addstr(dims[0] // 2 - 6, (dims[1] - len(string1)) // 2, string1, colorList[0])
+            screen.addstr(dims[0] // 2 - 5, dims[1] // 2 - 1, '%d' % (int(musicVol * 10)), curses.color_pair(1))
             
-            screen.addstr(dims[0] / 2 - 2, (dims[1] - len(string2)) / 2, string2, colorList[1])
-            screen.addstr(dims[0] / 2 - 1, dims[1] / 2 - 1, '%d' % (int(soundVol * 10)), curses.color_pair(1))
+            screen.addstr(dims[0] // 2 - 2, (dims[1] - len(string2)) // 2, string2, colorList[1])
+            screen.addstr(dims[0] // 2 - 1, dims[1] // 2 - 1, '%d' % (int(soundVol * 10)), curses.color_pair(1))
             
-            screen.addstr(dims[0] / 2 + 2, (dims[1] - len(string3)) / 2, string3, colorList[2]) 
-            screen.addstr(dims[0] / 2 + 6, (dims[1] - len(string4)) / 2, string4, colorList[3])
+            screen.addstr(dims[0] // 2 + 2, (dims[1] - len(string3)) // 2, string3, colorList[2])
+            screen.addstr(dims[0] // 2 + 6, (dims[1] - len(string4)) // 2, string4, colorList[3])
             screen.move(dims[0] - 1, dims[1] - 1)
             screen.refresh()
             q = screen.getch()
@@ -60,7 +60,7 @@ class Menu(object):
   
     def fxVolume(soundVol, soundList):
         while 1:
-            screen.addstr(dims[0] / 2 - 1, dims[1] / 2 - 1, '%d ' % (int(soundVol * 10)), curses.color_pair(2))
+            screen.addstr(dims[0] // 2 - 1, dims[1] // 2 - 1, '%d ' % (int(soundVol * 10)), curses.color_pair(2))
             screen.move(dims[0]-1, dims[1] - 1)
             screen.refresh()
             q = screen.getch()
@@ -84,7 +84,7 @@ class Menu(object):
     def musicVolume(musicVol):
         pass
         while 1:
-            screen.addstr(dims[0] / 2 - 5, dims[1] / 2 - 1, '%d ' % (int(musicVol * 10)), curses.color_pair(2))
+            screen.addstr(dims[0] // 2 - 5, dims[1] // 2 - 1, '%d ' % (int(musicVol * 10)), curses.color_pair(2))
             screen.move(dims[0]-1, dims[1] - 1)
             screen.refresh()
             q = screen.getch()
