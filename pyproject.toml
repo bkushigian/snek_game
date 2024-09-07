@@ -1,0 +1,18 @@
+[project]
+name = "wyrm"
+version = "0.0.1"
+authors = [
+  { name="Ben Kushigian", email="bkushigian@gmail.com" },
+]
+description = "A bad snake variant"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/bkushigian/wyrm"
+Issues = "https://github.com/bkushigian/wyrm/issues"
