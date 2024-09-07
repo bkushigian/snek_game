@@ -1,6 +1,6 @@
 [project]
-name = "snek"
-version = "0.0.1"
+name = "snek_game"
+version = "0.0.2.dev1"
 authors = [
   { name="Ben Kushigian", email="bkushigian@gmail.com" },
 ]
@@ -23,4 +23,4 @@ Homepage = "https://github.com/bkushigian/wyrm"
 Issues = "https://github.com/bkushigian/wyrm/issues"
 
 [project.scripts]
-snek = "snek.main:main"
+snek = "snek_game.main:main"

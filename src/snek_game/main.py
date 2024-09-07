@@ -17,7 +17,7 @@ except ImportError:
 
 ####
 
-RESOURCES = pkg_resources.resource_filename("snek", "resources")
+RESOURCES = pkg_resources.resource_filename("snek_game", "resources")
 MEDIA = osp.join(RESOURCES, 'media')
 DATA = osp.join(RESOURCES, 'data')
 LEVELS= osp.join(RESOURCES, "levels")
@@ -55,7 +55,7 @@ hidden_space_list = []
 # [y, x, starttime, updatetime]
 
 repeat = True; points = 0; sleep_time = .2;
-currentLevel = 0
+current_level = 0
 direction = 1 # 0: UP, 1: RIGHT, 2: DOWN, 3: LEFT
 UP, RIGHT, DOWN, LEFT = 0, 1, 2, 3
 apMOD = 1; mpMOD = 1; applePoints = 5; moneyPoints = 25
@@ -509,7 +509,7 @@ def pause():
   
 
 def writeScoreBoard():
-  screen.addstr(0, dims[1] // 2 - 27, 'LEVEL: %d          SCORE: %d            LIVES: %d' % (currentLevel, points, lives), curses.color_pair(4))
+  screen.addstr(0, dims[1] // 2 - 27, 'LEVEL: %d          SCORE: %d            LIVES: %d' % (current_level, points, lives), curses.color_pair(4))
   screen.move(dims[0]-1, dims[1]-1)
 
 
@@ -665,7 +665,7 @@ def winGame():
   
 #################START PROGRAM!!!!!!######################
 difficulty = selectDifficulty()
-points, applePoints, moneyPoints, currentLevel, mortal, lives, mpMOD, apMOD, cEGGS = takeCode(points, applePoints, moneyPoints, currentLevel, mortal, lives, mpMOD, apMOD)
+points, applePoints, moneyPoints, current_level, mortal, lives, mpMOD, apMOD, cEGGS = takeCode(points, applePoints, moneyPoints, current_level, mortal, lives, mpMOD, apMOD)
 
   
 screen = curses.initscr()
@@ -692,10 +692,9 @@ if import_success == True:
 
 time.sleep(1)
 
-currentLevel, apple_list, enemy_list, money_list, extra_life_list, hidden_space_list, hint, sleep_time, repeat = levelSelect(currentLevel)
+current_level, apple_list, enemy_list, money_list, extra_life_list, hidden_space_list, hint, sleep_time, repeat = levelSelect(current_level)
 repeat = True
-while repeat == True:
-
+while repeat:
   game_time += 1
 
   time.sleep(sleep_time * difficulty)
@@ -711,46 +710,38 @@ while repeat == True:
 
   screen.move(dims[0]-1, dims[1]-1) 
   screen.refresh()
+  head = my_list[5]
   
-  gotApple = [False, []]
-  for i in apple_list:
-    if my_list[5] == i:
+  for apple_dims in apple_list:
+    if head == apple_dims:
       chomp.play()
-      gotApple[0], gotApple[1] = True, i
       points += applePoints*apMOD
-  if  gotApple[0] == True:
-    del(apple_list[apple_list.index(gotApple[1])])
+      apple_list.remove(apple_dims)
    
-  got_life = [False, []]
-  for i in extra_life_list:
-    if my_list[5] == i:
-      got_life[0], got_life[1] = True, i
+  for extra_life_dims in extra_life_list:
+    if head == extra_life_dims:
       lives += 1
       life.play()
       writeScoreBoard()
-    if got_life[0] == True:
-      del(extra_life_list[extra_life_list.index(got_life[1])])
+      extra_life_list.remove(extra_life_dims)
       
   if mortal == True:      
-    for i in enemy_list:
-      if my_list[5] == i:
+    for enemy_dims in enemy_list:
+      if head == enemy_dims:
         block.play()
-        repeat, lives, my_list, direction = gameOver(enemy_list, apple_list, money_list, my_list, extra_life_list, hidden_space_list, currentLevel, lives)
+        repeat, lives, my_list, direction = gameOver(enemy_list, apple_list, money_list, my_list, extra_life_list, hidden_space_list, current_level, lives)
   
-  gotMoney = [False, []]
-  for i in money_list:
-    if my_list[5] == i:
-      gotMoney[0], gotMoney[1] = True, i
+  for money_dims in money_list:
+    if my_list[5] == money_dims:
       money.play()
       points += moneyPoints*mpMOD
-  if gotMoney[0] == True:
-      del(money_list[money_list.index(gotMoney[1])])
+      money_list.remove(money_dims)
   
   if len(apple_list) == 0:
     time.sleep(.1)
     hidden_space_list = []
     levelwin.play()
-    currentLevel, apple_list, enemy_list, money_list, extra_life_list, hidden_space_list, hint, sleep_time, repeat = levelSelect(currentLevel)
+    current_level, apple_list, enemy_list, money_list, extra_life_list, hidden_space_list, hint, sleep_time, repeat = levelSelect(current_level)
     time.sleep(2)
     my_list = [[2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6]]
     screen.refresh()
