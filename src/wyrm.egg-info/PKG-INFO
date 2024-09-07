@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: wyrm
+Version: 0.0.1
+Summary: A bad snake variant
+Author-email: Ben Kushigian <bkushigian@gmail.com>
+Project-URL: Homepage, https://github.com/bkushigian/wyrm
+Project-URL: Issues, https://github.com/bkushigian/wyrm/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pygame>=2.0.0
+
+# WyRm
+The devolved Snake game we all wish I hadn't made.
+
+## What is WyRm?
+It's a really crappy game. It's even crappilyer coded. I'm trying to fix both
+of these things. The first bit is probably here to stay, but the second bit can be
+improved.
+
+![][wyrm1]
+
+## Why should I play WyRm?
+Honestly? You shouldn't.
+
+![][wyrm2]
+
+## Ben, I haven't read any of the things above this. How do I install?
+1. Download this
+2. Install pygame (`sudo apt-get install python-pygame` or `pip install pygame`
+   should do the trick)
+3. Give away your computer because you've ruined it
+4. Never speak of this again
+
+![][wyrm3]
+
+## Ben, this crashes and my terminal is all messed up
+You need to make sure the terminal is big enough. Make sure it's at least 81x35
+characters in dimension, because this is written really poorly and breaks for
+the slightest reason.
+
+## Ben, WTF are the controls?
+ASDW dude. Oh, and hit M For menu.
+
+## Ben, I really don't like your game.
+Dude, I warned you.
+
+## Ben, you're too hard on yourself. This is a great game!!
+Thank you so much, Ben, it's so nice to finally get some good feedback, even if
+it is from myself.
+
+## I *Love* the music
+Thanks, I spent 24 hours of my life programming frequencies and time durations
+into Audacity. I got lazy and rounded off some of the decimals, that's why it
+sounds out of tune.
+
+[wyrm1]: www/img/punishwyrm.png "WyRm!"
+[wyrm2]: www/img/mandelsnake.png "WyRm!!"
+[wyrm3]: www/img/juliawyrm.png "WWWWYYYYRYRRYRYRYYRRRMMMMMMMMMM!!!!!!!!!!!!!!!!!!!!!!!!!!"
